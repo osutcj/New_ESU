@@ -69,12 +69,31 @@ const FaqContainer = styled.div`
 `;
 
 const FaqItem = styled.div<{ $active: boolean }>`
-  background: #073B7F;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(28, 22, 68, 0.96), rgba(58, 50, 120, 0.94), rgba(42, 42, 90, 0.96));
   border-radius: 15px;
   margin-bottom: 25px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(92, 78, 176, 0.24);
   transition: transform 0.2s ease-in-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(196, 181, 253, 0.85) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(147, 197, 253, 0.82) 0 1px, transparent 1.4px);
+    background-size: 180px 60px;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   &:hover {
     transform: scale(1.02);
@@ -83,7 +102,7 @@ const FaqItem = styled.div<{ $active: boolean }>`
 
 const FaqQuestion = styled.button`
   width: 100%;
-  background: none;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   border: none;
   color: #fff;
   font-size: 1.4rem;
@@ -98,7 +117,7 @@ const FaqQuestion = styled.button`
   transition: background 0.3s, color 0.3s;
 
   &:hover {
-    background: #fac82d;
+    background: rgba(250, 200, 45, 0.92);
     color: #073B7F;
   }
 `;
@@ -109,13 +128,32 @@ const FaqArrow = styled.span<{ $active: boolean }>`
 `;
 
 const FaqAnswer = styled.div<{ $active: boolean }>`
-  background: #1366d3;
+  position: relative;
+  background: linear-gradient(160deg, rgba(108, 94, 190, 0.94), rgba(138, 123, 220, 0.9), rgba(114, 114, 190, 0.94));
   color: #fff;
   padding: ${({ $active }) => ($active ? "20px" : "0 20px")};
   max-height: ${({ $active }) => ($active ? "300px" : "0")};
   overflow: hidden;
   transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease-in-out;
   font-family: 'Poppins', sans-serif;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(196, 181, 253, 0.72) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(147, 197, 253, 0.72) 0 1px, transparent 1.4px);
+    background-size: 180px 60px;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   a {
     color: #fff;
@@ -134,11 +172,11 @@ const FaqAnswer = styled.div<{ $active: boolean }>`
 const faqData = [
   {
     question: "Unde? Când? Cine?",
-    answer: "Cluj-Napoca, perioada 19 iulie - 2 august 2025 și o mulțime de oameni faini.",
+    answer: "Cluj-Napoca, perioada 18 iulie - 1 august 2026 și o mulțime de oameni faini.",
   },
   {
     question: "Cât este prețul taberei?",
-    answer: "Taxa de participare este în valoare de 650 de lei.",
+    answer: "Taxa de participare este în valoare de 750 de lei.",
   },
   {
     question: "Trebuie să am o anumită vârstă?",
@@ -150,7 +188,7 @@ const faqData = [
   },
   {
     question: "De ce acte am nevoie pentru a mă înscrie?",
-    answer: "link:/esu2025",
+    answer: "link:/ESU2026",
     isLink: true,
   },
   {
@@ -171,7 +209,7 @@ const faqData = [
   },
   {
     question: "Unde se face înscrierea?",
-    answer: "Înscrierea se face prin formularul de înscriere disponibil pe pagina ESU 2025.",
+    answer: "Înscrierea se face prin formularul de înscriere disponibil pe pagina ESU 2026.",
   },
   {
     question: "Pot pleca mai repede din tabără dacă am și alte chestii planificate dinainte?",
@@ -207,7 +245,7 @@ const FAQ = () => {
                 </FaqQuestion>
                 <FaqAnswer $active={activeIndex === idx}>
                   {item.isLink ? (
-                    <p>Tot procesul necesar înscrierii îl găsești <Link to="/esu2025" style={{ color: "#fff", textDecoration: "underline" }}>aici</Link>.</p>
+                    <p>Tot procesul necesar înscrierii îl găsești <Link to="/ESU2026" style={{ color: "#fff", textDecoration: "underline" }}>aici</Link>.</p>
                   ) : (
                     <p>{item.answer}</p>
                   )}

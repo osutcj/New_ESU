@@ -62,7 +62,9 @@ const TeamSection = styled.section`
 // Team Member Card
 const TeamCard = styled.div`
   width: 75vw;
-  background: linear-gradient(145deg, #094b9c, #052d6a);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(40, 32, 90, 0.95), rgba(72, 61, 139, 0.92), rgba(52, 52, 110, 0.95));
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
   display: flex;
@@ -75,7 +77,24 @@ const TeamCard = styled.div`
   min-height: 300px;
   flex-wrap: wrap;
   box-sizing: border-box;
-  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(196, 181, 253, 0.7) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(147, 197, 253, 0.72) 0 1px, transparent 1.4px);
+    background-size: 180px 60px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -233,86 +252,78 @@ const ExtraRightSection = styled.div`
 // Team member data
 const teamMembers = [
   {
-    name: "Florea Alexandru",
+    name: "Călin Bogdan-Secară ",
     role: "Coordonator",
-    quote: "Să pleci două săptămâni de acasă, într-un loc necunoscut, alături de oameni pe care nu i-ai mai întâlnit, e o nebunie. Să revii, an de an, ducând mai departe aceleași emoții, înseamnă iubire. ESU devine acasă nu prin locație sau activități, ci prin sufletele care îl fac magic.",
-    photo: "/assets/images/Echipa/Florea.png",
-    icon: "/assets/images/Forme/rac.png",
-    facebook: "https://facebook.com/flowerman13",
-    instagram: "https://instagram.com/alexandruflorea13",
+    quote: "Pentru mine ESU nu este doar un simplu proiect, ESU este locul în care eu mi-am dat seama că să spui “DA” când îți apare în cale o oportunitate este singurul lucru corect de făcut. Pentru mine această experiență se simte deja ca acasă, iar dacă ar trebui să descriu tabăra aș spune exact asa: “ESU NU POATE FI POVESTIT, POATE FI DOAR TRĂIT”",
+    photo: "/assets/images/Echipa/Calin.jpeg",
+    icon: "/assets/images/Forme/mana.png",
+    facebook: "https://www.facebook.com/profile.php?id=100005923397549",
+    instagram: "https://www.instagram.com/secaracalin?igsh=MXF3MDY1Z25veWdobA==&utm_source=qr",
   },
   {
-    name: "Orțan Adela",
+    name: "Ormindean Vlad-Cosmin",
     role: "Responsabil BC",
-    quote: "Nu credeam că este posibil să te apropii atât de mult de niște persoane în doar două săptămâni. ESU mi-a schimbat complet perspectiva; este un proiect de suflet pentru mine și mi-aș dori ca toată lumea să aibă ocazia, măcar o dată în viață, să trăiască ceea ce am trăit eu la ESU.",
-    photo: "/assets/images/Echipa/Adela.png",
-    icon: "/assets/images/Forme/scoica1.png",
-    facebook: "https://www.facebook.com/adela.ortan",
-    instagram: "https://www.instagram.com/adela_ortan/",
+    quote: "Nu m-aș fi gândit că, acum doi ani, atunci când am fost voluntar, cele două săptămâni petrecute în tabăra de vară ESU îmi vor lăsa atât de multe emoții, trăiri și amintiri frumoase. Este o experiență pe care trebuie să o vezi cu ochii tăi ca să o poți înțelege cu adevărat.",
+    photo: "/assets/images/Echipa/Vlad.jpeg",
+    icon: "/assets/images/Forme/glob.png",
+    facebook: "https://www.facebook.com/share/1Qt3rsg3aP/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/__vld._?igsh=MThybG00M3V6N21hYw%3D%3D&utm_source=qr",
   },
   {
-    name: "Pavel Luca",
+    name: "Bugnar Daria-Iulia",
     role: "Secretar",
-    quote: "Nu mă așteptam ca o tabără de vară să-mi ofere șansa unui nou început. La ESU am legat prietenii valoroase, care s-au menținut de-a lungul timpului și pentru care sunt în continuare recunoscător. Am amintiri la care aș vrea să mă întorc ori de câte ori am ocazia, fiindcă vor rămâne mereu importante pentru mine.",
-    photo: "/assets/images/Echipa/Luca.png",
-    icon: "/assets/images/Forme/calut_de_mare.png",
-    facebook: "https://facebook.com/acu1p",
-    instagram: "https://instagram.com/acu1p",
+    quote: "Două săptămâni la ESU mi-au resetat tot ce credeam că știu despre facultate, oameni și viitor. A fost și va rămâne cea mai frumoasă experiență. Nu se poate explica în cuvinte, ci trebuie trăită. E locul perfect să descoperi ce ți se potrivește și să-ți creezi amintiri și prietenii care devin parte din tine, dincolo de vară.",
+    photo: "/assets/images/Echipa/Daria.jpg",
+    icon: "/assets/images/Forme/ochi.png",
+    facebook: "https://www.facebook.com/daria.bugnar.9",
+    instagram: "https://www.instagram.com/daria.bugnar?igsh=bmttMTVocmp2dDV5&utm_source=qr",
   },
   {
-    name: "Bașa Iarina",
+    name: "Neacşu Andreea-Mihaela",
     role: "Co-coordonator",
-    quote: "Când am venit la ESU, habar n-aveam că o tabără de vară mă poate convinge unde să dau la facultate. Dar ghici ce? Fix asta s-a întâmplat. A fost genul ăla de experiență unde te simți bine, râzi, cunoști oameni super tari și, cumva, în timp ce te distrezi, îți dai seama că \"aici sunt oamenii mei!\"",
-    photo: "/assets/images/Echipa/Iarina.png",
-    icon: "/assets/images/Forme/delfin.png",
-    facebook: "https://www.facebook.com/iarinamaria.basa",
-    instagram: "https://www.instagram.com/iarinabasa",
+    quote: "Pentru mine nu au fost doar două săptămâni de vară la ESU, ci un moment care m-a schimbat pe interior și mi-a creat amintiri pe care nu le voi putea uita niciodată. Nu există suficiente cuvinte să explici ce înseamnă ESU cu adevărat, din această cauză trebuie să îl trăiești. Totuși  există un singur cuvânt prin care aș putea descrie acest proiect: “ACASĂ”.",
+    photo: "/assets/images/Echipa/Teky.jpg",
+    icon: "/assets/images/Forme/luna.png",
+    facebook: "https://www.facebook.com/share/1DKhsdjDsP/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/andreea_teky?igsh=MXA1cmFybjM1ajkxeg==&utm_source=qr",
   },
   {
-    name: "Constandache Ionela",
+    name: "Secară Diana-Gabriela",
     role: "Co-coordonator",
-    quote: "Pentru mine ESU nu a fost doar o tabără de vară, ci o experiență care m-a ajutat să mă dezvolt mai mult decât orice așteptare. Cu siguranță, toate amintirile și prieteniile pe care le-am creat la ESU, îmi vor rămâne adânc imprimate în suflet!",
-    photo: "/assets/images/Echipa/Ionela.png",
-    icon: "/assets/images/Forme/scoica2.png",
-    facebook: "https://www.facebook.com/share/1AuM9KcuG7/",
-    instagram: "https://www.instagram.com/ionellaa__",
+    quote: "M-am aventurat in universul ESU pe cont propriu, insa nu aveam idee ca aceasta tabără imi va dărui o nouă versiune a mea și ca ma transforma in cele mai frumoase moduri. Am avut de învățat din fiecare moment și de la fiecare persoana, iar toate experiențele cumulate mi-au colorat vara și sufletul. ESU este și va fi mereu pentru mine sinonim cu “Acasă”.",
+    photo: "/assets/images/Echipa/Diana.jpeg",
+    icon: "/assets/images/Forme/stea.png",
+    facebook: "https://www.facebook.com/share/1DL4LaanCR/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/dia.secara?igsh=MXViMjNkMnFjOWpodg%3D%3D&utm_source=qr",
   },
   {
-    name: "Felic Cristian",
+    name: "Cîrtiță Bianca-Yolanda",
+    role: "Co-coordonator",
+    quote: "Când am completat formularul pentru a fi voluntar nu mă gândeam că niște oameni cu care voi petrece 2 săptămâni îmi vor schimba percepția asupra unei “simple tabere de vară”, pentru că ESU nu e doar atât. ESU este o experiență care nu poate fi descrisă în cuvinte, trebuie trăită. ESU înseamnă prietenie, amintiri, legături care se mențin peste ani.",
+    photo: "/assets/images/Echipa/Bia.jpg",
+    icon: "/assets/images/Forme/fluture.png",
+    facebook: "https://www.facebook.com/share/1BtvPJWoFR/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/bianca_cirtita?igsh=MXFpa2hrY2szMXExZA==&utm_source=qr",
+  },
+  {
+    name: "Dumitrean Denis-Andrei",
     role: "Responsabil Activități",
-    quote: "Două săptămâni, 14 zile pline de aventuri, conversații, râsete, și prietenii legate neașteptat. 14 zile dureros de scurte. Iar la final, când toți își urau rămas bun, am știut că, să vin la ESU a fost cea mai bună alegere, deoarece chiar dacă plecam cu inima grea aveam sufletul plin.",
-    photo: "/assets/images/Echipa/Felic.png",
-    icon: "/assets/images/Forme/caracatita2.png",
-    facebook: "https://www.facebook.com/share/165S1xpKtm/",
-    instagram: "https://www.instagram.com/felic.cristian",
+    quote: "Nu credeam niciodată că o tabără de vară ar putea deveni o experiență de viață pe care nu o voi uita niciodată. Am cunoscut o mulțime de oameni noi, cu personalități diferite, dar cu un scop comun: de a accepta o nouă provocare. ESU reprezintă contextul perfect de a crea legături reale cu persoane noi, de a-ți îmbunătăți aptitudinile și de a deveni cea mai bună versiune a ta, alături de cei mai faini oameni.",
+    photo: "/assets/images/Echipa/Denis.jpg",
+    icon: "/assets/images/Forme/clepsidra.png",
+    facebook: "https://www.facebook.com/profile.php?id=100040343001602",
+    instagram: "https://www.instagram.com/denis._071?igsh=MWVtejAwYTJ0eTNqeQ==",
   },
   {
-    name: "Sîrb Andrei",
+    name: "Armean Andrei",
     role: "Responsabil Activități",
-    quote: "ESU m-a făcut să-mi doresc să retrăiesc experiențele din tabără în fiecare vară. Cele două săptămâni m-au ajutat să leg prietenii de lungă durată și să mă dezvolt ca persoană.",
-    photo: "/assets/images/Echipa/Deiu.png",
-    icon: "/assets/images/Forme/testoasa1.png",
-    facebook: "https://www.facebook.com/share/1Kr2cp5CKo/",
-    instagram: "https://www.instagram.com/andreisirb3011",
-  },
-  {
-    name: "Coș Tudor",
-    role: "Responsabil Tehnic",
-    quote: "ESU este cea mai tare experiență de vară din viața mea. Nu doar că mi-am făcut o mulțime de noi prieteni, dar am și reușit să ies din propria zonă de confort. Toate amintirile pe care le-am creat în cele două săptămâni de tabără vor rămâne mereu parte din sufletul meu!",
-    photo: "/assets/images/Echipa/Cos.png",
-    icon: "/assets/images/Forme/peste1.png",
-    facebook: "https://www.facebook.com/tudoradrian.cos.5",
-    instagram: "https://www.instagram.com/tudor._.cos",
-  },
-  {
-    name: "Nicula Mălina",
-    role: "Responsabil PR",
-    quote: "ESU pentru mine înseamnă… tot. Este experiența care mi-a schimbat viața din toate punctele de vedere. La ESU am înțeles ce înseamnă o prietenie adevărată, cum să mă distrez la maximum și cât de ușor poate fi să socializez cu persoane necunoscute. ESU m-a învățat să apreciez fiecare lucru, oricât de mic ar fi.",
-    photo: "/assets/images/Echipa/Pali.png",
-    icon: "/assets/images/Forme/Steluta.png",
-    facebook: "https://www.facebook.com/share/1HvuZphhkq/",
-    instagram: "https://www.instagram.com/_saturn.s_ring_",
-  },
+    quote: "ESU nu este doar o tabără, este un loc din care pleci cu totul alta persoana. În acele doua saptamani mi-am dat seama ca aveam un gol în suflet pe care fiecare provocare, fiecare amintire, fiecare emoție au reușit să-l umple. Nu poti sa intelegi dacă nu ai fost aici și nu poți sa mai uiți dacă ai fost aici. Asta e ESU!",
+    photo: "/assets/images/Echipa/Andrei.jpeg",
+    icon: "/assets/images/Forme/bagheta.png",
+    facebook: "https://www.facebook.com/share/1DntSzm8pC/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/andrei.armean/",
+  }
+ 
 ];
 
 const Echipa = () => {

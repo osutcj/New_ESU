@@ -1,8 +1,26 @@
 import { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+const twinkleAnimation = keyframes`
+  0%, 100% {
+    opacity: 0.14;
+  }
+  50% {
+    opacity: 0.28;
+  }
+`;
+
+const driftAnimation = keyframes`
+  from {
+    background-position: 0 0, 24px 10px, 68px 22px, 110px 6px;
+  }
+  to {
+    background-position: 140px 0, 164px 10px, 208px 22px, 250px 6px;
+  }
+`;
 
 // Global styles
 const GlobalStyle = createGlobalStyle`
@@ -26,6 +44,7 @@ const HeroSection = styled.section`
   width: 100%;
   height: 90vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -41,6 +60,17 @@ const HeroSection = styled.section`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: -1;
+  }
+`;
+
+const HeroContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-45px);
+
+  @media (max-width: 768px) {
+    transform: translateY(-30px);
   }
 `;
 
@@ -61,6 +91,28 @@ const HeroTitle = styled.h1`
   @media (max-width: 1500px) { font-size: 4.4rem; }
   @media (max-width: 950px) { font-size: 3.8rem; }
   @media (max-width: 768px) { font-size: 2.6rem; padding: 0 10px; }
+`;
+
+const HeroButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fac82d;
+  color: #073B7F;
+  font-weight: 700;
+  padding: 18px 34px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 30px;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+  }
 `;
 
 const MainWrap = styled.main`
@@ -103,10 +155,43 @@ const CeESUDescription = styled.p`
 
 // Counters Section
 const CountersSection = styled.section`
-  background: #073B7F;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(40, 32, 90, 0.95), rgba(72, 61, 139, 0.92), rgba(52, 52, 110, 0.95));
   color: white;
   padding: 50px 20px;
   margin-bottom: 1.5%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(196, 181, 253, 0.7) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(147, 197, 253, 0.72) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.55) 0 0.7px, transparent 1px);
+    background-size: 180px 60px;
+    opacity: 0.18;
+    pointer-events: none;
+    animation: ${twinkleAnimation} 6.5s ease-in-out infinite, ${driftAnimation} 26s linear infinite;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(167, 139, 250, 0.1), transparent 35%, transparent 65%, rgba(96, 165, 250, 0.1)),
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08), transparent 0 16%),
+      radial-gradient(circle at 78% 40%, rgba(167, 139, 250, 0.08), transparent 0 18%);
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const CountersContainer = styled.div`
@@ -151,26 +236,64 @@ const CounterLabel = styled.span`
 
 // Video Section
 const VideoSection = styled.section`
-  background-color: #073B7F;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(15, 12, 41, 0.98), rgba(48, 43, 99, 0.96), rgba(36, 36, 62, 0.98));
   padding: 3vh 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(196, 181, 253, 0.7) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(147, 197, 253, 0.72) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.55) 0 0.7px, transparent 1px);
+    background-size: 180px 60px;
+    opacity: 0.18;
+    pointer-events: none;
+    animation: ${twinkleAnimation} 6.5s ease-in-out infinite, ${driftAnimation} 26s linear infinite;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(167, 139, 250, 0.1), transparent 35%, transparent 65%, rgba(96, 165, 250, 0.1)),
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08), transparent 0 16%),
+      radial-gradient(circle at 78% 40%, rgba(167, 139, 250, 0.08), transparent 0 18%);
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const VideoContainer = styled.div`
   position: relative;
   padding-bottom: 56.25%;
-  padding-top: 4vh;
   height: 0;
   overflow: hidden;
   margin: 0 auto 8vh auto;
-  max-width: 80vw;
+  max-width: 70vw;
   border-radius: 15px;
 
-  iframe {
+  iframe,
+  video {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transform-origin: center center;
+    object-fit: cover;
   }
 `;
 
@@ -334,23 +457,28 @@ function App() {
       <Header />
       <MainWrap>
         <HeroSection>
-          <HeroTitle>
-            <span className="line1">ENGINEERING SUMMER</span><br />
-            <span className="line2">UNIVERSITY</span>
-          </HeroTitle>
+          <HeroContent>
+            <HeroButton
+              href="https://docs.google.com/forms/d/e/1FAIpQLScfyu9j-1PWNBMg-1QIfnpbfs6H0Ph4RHy2BQHGXTpAwYx22A/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Înscrie-te acum
+            </HeroButton>
+            <HeroTitle>
+              <span className="line1">ENGINEERING SUMMER</span><br />
+              <span className="line2">UNIVERSITY</span>
+            </HeroTitle>
+          </HeroContent>
         </HeroSection>
 
         <CeESU>
           <CeESUTitle>Ce este Engineering Summer University?</CeESUTitle>
           <CeESUDescription>
-            Engineering Summer University este o tabără de vară de două săptămâni, destinată elevilor de clasa a XI-a pasionați de domeniile STEM, curioși să exploreze aceste domenii captivante și să trăiască experiența de student într-un mediu dinamic, ieșind din zona de confort.
+            Prin proiectul Engineering Summer University, aflat la a XII-a ediție, Organizația Studenților din  Universitatea Tehnică din Cluj-Napoca îți oferă ocazia să experimentezi viața de student într-un mod interactiv și plin de distracție! Timp de 2 săptămâni, poți participa la cursuri și ateliere. 
             <br /><br />
-            Participanții vor avea parte de un program interactiv și antrenant, ce îmbină teoria cu practica. Pe lângă cursuri susținute de profesori renumiți de la Universitatea Tehnică din Cluj-Napoca, elevii vor lua parte la activități de laborator, punând în aplicare cunoștințele acumulate într-un mod practic și inovator.
-            <br /><br />
-            Dincolo de partea academică, tabăra include și numeroase activități recreative menite să ajute participanții să-și dezvolte abilitățile de comunicare și să se integreze într-o comunitate activă și energică. Cazarea în căminele studențești din Observator le va oferi ocazia de a experimenta viața de campus într-un mod autentic.
-            <br /><br />
-            Dacă încă nu ți-ai făcut planuri pentru perioada 19 iulie - 2 august, alătură-te nouă pentru două săptămâni pline de experiențe de neuitat, alături de tineri entuziaști din întreaga țară!
-          </CeESUDescription>
+            Înveți să lucrezi în echipă,  explorezi campusul universitar și descoperi cum este să înveți alături de viitorii tăi colegi. Pe lângă toate acestea, te așteaptă și multe activități distractive, jocuri, seri tematice și momente de neuitat alături de oameni faini.
+            </CeESUDescription>
         </CeESU>
 
         <CountersSection>
@@ -371,14 +499,12 @@ function App() {
         </CountersSection>
 
         <VideoSection>
-          <VideoTitle>Aftermovie ESU 2024</VideoTitle>
+          <VideoTitle>Aftermovie ESU 2025</VideoTitle>
           <VideoContainer>
-            <iframe
-              src="https://www.youtube.com/embed/IkRQNqete7g"
-              frameBorder="0"
-              allowFullScreen
-              title="ESU 2024 Aftermovie"
-            />
+            <video controls width="100%" height="100%">
+              <source src="/videos/aftermovie2025.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </VideoContainer>
         </VideoSection>
 

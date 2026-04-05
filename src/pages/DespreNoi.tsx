@@ -97,14 +97,43 @@ const ResponsiveHighlight = styled.b`
   @media (min-width: 951px) and (max-width: 1500px) { font-size: 1.6rem; }
 `;
 
-// Blue background section
+// background section
 const VideoBackground = styled.div`
   position: relative;
   max-width: 100%;
-  background-color: #073B7F;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(40, 32, 90, 0.95), rgba(72, 61, 139, 0.92), rgba(52, 52, 110, 0.95));
   height: auto;
   padding-bottom: 10vh;
   padding-top: 6vh;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(196, 181, 253, 0.7) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(147, 197, 253, 0.72) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.55) 0 0.7px, transparent 1px);
+    background-size: 180px 60px;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(167, 139, 250, 0.1), transparent 35%, transparent 65%, rgba(96, 165, 250, 0.1));
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const CeESUDescription2 = styled.p`
@@ -245,17 +274,19 @@ const DespreNoi = () => {
 
         <CeESU>
           <CeESUDescription>
-            <ResponsiveHighlight>Engineering Summer University</ResponsiveHighlight> este o tabără de 2 săptămâni dedicată elevilor de clasa a 11-a. Organizat de OSUT Cluj și aflat la a 11-a ediție, scopul proiectului este acela de a oferi participanților experiența cât mai veritabilă de student.
+            <ResponsiveHighlight>Engineering Summer University</ResponsiveHighlight> nu este doar o simplă tabără de vară, ci o experiență care îți schimbă ritmul, perspectiva și, poate, chiar planurile de viitor. Timp de două săptămâni, ieși din rutina de zi cu zi și intri într-un mediu complet nou, unde fiecare zi aduce ceva diferit. Alături de elevi de clasa a XI-a din toată țara, ajungi să faci parte dintr-o comunitate plină de energie, curiozitate și dorință de a descoperi mai mult.
             <br /><br />
-            Pregătește-te pentru un program captivant, unde vei învăța prin experiență! Vei participa la cursuri interesante și laboratoare hands-on, susținute de profesori de top de la Universitatea Tehnică din Cluj-Napoca. Fiecare activitate te va provoca să gândești creativ și tehnic, oferindu-ți oportunitatea de a pune în practică ceea ce înveți într-un mod inovator și, de ce nu, distractiv.
+            Pe parcursul acestor zile, vei simți cum e să trăiești ca un student: vei sta în cămin, vei împărți experiențe cu oameni noi și vei lega prietenii care, adesea, continuă și după finalul taberei. Atmosfera de campus, serile petrecute împreună, glumele, provocările și momentele spontane sunt cele care transformă totul într-o amintire de neuitat.
+            <br /><br />
+            Activitățile sunt gândite astfel încât să nu simți că „înveți” în sensul clasic, ci mai degrabă că explorezi. Vei descoperi lucruri noi prin experiențe practice, vei lucra în echipă, vei participa la provocări interactive și vei avea ocazia să interacționezi cu domenii cu care poate nu le-ai mai luat în calcul până acum. Totul se întâmplă într-un mod dinamic, relaxat și prietenos, unde accentul cade pe curiozitate și implicare, nu pe presiune.
+            <br /><br />
+            În același timp, vei ieși din zona de confort fără să-ți dai seama. Fie că este vorba de a cunoaște oameni noi, de a vorbi în fața altora sau de a încerca activități complet diferite, fiecare zi te ajută să devii mai încrezător și mai deschis.
           </CeESUDescription>
         </CeESU>
 
         <VideoBackground>
           <CeESUDescription2>
-            Dar ESU nu înseamnă doar învățat! Pe lângă experiențele educaționale, te așteaptă activități de echipă, provocări captivante și seri tematice, toate menite să îți dezvolte abilitățile sociale și să creeze prietenii care pot dura o viață. Cazarea în căminele campusului îți va oferi o experiență autentică de viață de student.
-            <br /><br />
-            Nu ai planuri pentru vară? ESU este locul ideal unde poți învăța, te poți distra și poți construi fundamentul unui viitor de succes! Vino să explorezi ingineria într-un mod inedit și să creezi amintiri de neuitat alături de o echipă de tineri pasionați!
+            Engineering Summer University înseamnă, în esență, experiență: oameni, emoții, energie și amintiri. Este genul de vară pe care nu doar o trăiești, ci o povestești mai departe. Dacă vrei să simți cum e să faci parte dintr-o astfel de comunitate și să ai două săptămâni care chiar contează, acesta e momentul să îți dai frâu liber la experimentat în perioada 18 iulie - 1 august și să ni te alături în povestea ce urmează scrisă!
           </CeESUDescription2>
           <CeESUMotto>Dive into the journey of a lifetime!</CeESUMotto>
         </VideoBackground>
